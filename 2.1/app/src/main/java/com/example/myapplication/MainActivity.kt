@@ -1,34 +1,52 @@
 package com.example.myapplication
 
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.ui.AppBarConfiguration
 import com.example.myapplication.databinding.ActivityMainBinding
 
 
+class Book  {
+    var bookId: Int = 0
+    var name: String
+    var author: String
+    var price: Double = 0.0
+
+    constructor (bookId: Int, name: String, author: String, price: Double) {
+        this.bookId = bookId
+        this.name = name
+        this.author = author
+        this.price = price
+    }
+    public fun changeId(_bookId: Int) {
+        this.bookId = _bookId
+    }
+    public fun changeName(_name: String) {
+        this.name = _name
+    }
+    public fun changeAuthor(_author: String) {
+        this.author = _author
+    }
+    public fun changePrice(_price: Double) {
+        this.price = _price
+    }
+    public fun printBook() {
+        System.out.println("Книга " + this.name + " (" + bookId + ", " + author + ", " + price + ")")
+    }
+}
+
 class MainActivity : AppCompatActivity() {
 
-    class Employee  {
-        var empId: Int = 0
-        lateinit var name: String
-        lateinit var ssn: String
-        var salary: Double = 0.0
-
-        constructor (empId: Int, name: String, ssn: String, salary: Double) {
-            this.empId = empId
-            this.name = name
-            this.ssn = ssn
-            this.salary = salary
-        }
-    }
-
     fun main() {
-        var employee = Employee(0, "test", "test", 56236.5)
+        var book = Book(0, "Война и Мир", "Какой-то автор", 256.50)
+        book.changeAuthor("Лев Николаевич Толстой")
+        book.printBook()
     }
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
@@ -38,6 +56,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        main()
+    }
+
+    public fun move_car (view: View) {
+        var anim = AnimationUtils.loadAnimation(this, R.anim.anim)
+        var img = findViewById<RelativeLayout>(R.id.car)
+        img.startAnimation(anim)
+    }
+
+    public fun open_anim(view: View) {
+        setContentView(R.layout.activity_third)
     }
 
      public fun switch_view(view: View) {

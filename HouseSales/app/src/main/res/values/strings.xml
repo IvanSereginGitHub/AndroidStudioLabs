@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HouseSales</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Агенство "Домовёнок"</string>
+    <string name="nav_header_subtitle">Здесь вы можете купить себе дом (и домовёнка в придачу!)</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Информация</string>
+
+    <string name="menu_home">Каталог домов</string>
+    <string name="menu_gallery">Купленные дома</string>
+    <string name="menu_slideshow">Профиль</string>
+</resources>
