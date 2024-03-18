@@ -1,7 +1,7 @@
 package com.example.housesales.ui.home
 
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.housesales.MainActivity
@@ -49,8 +50,7 @@ class HomeFragment : Fragment() {
                 MainActivity.DBHelper.TITLE_COl))
             new_view.findViewById<TextView>(R.id.house_price).text = cursor2.getString(cursor2.getColumnIndex(
                 MainActivity.DBHelper.PRICE_COL))
-            var drawableId = this.getResources().getIdentifier(cursor2.getString(cursor2.getColumnIndex(MainActivity.DBHelper.IMG_COL)), "mipmap", context?.getPackageName())
-            new_view.findViewById<ImageView>(R.id.house_image).setImageResource(drawableId)
+            new_view.findViewById<ImageView>(R.id.house_image).setImageURI(Uri.parse(cursor2.getString(cursor2.getColumnIndex(MainActivity.DBHelper.IMG_COL))))
             var found_id = cursor2.getInt(cursor2.getColumnIndex(
                 MainActivity.DBHelper.ID_COL))
             new_view.findViewById<Button>(R.id.house_buy).setOnClickListener {
@@ -65,8 +65,7 @@ class HomeFragment : Fragment() {
                     MainActivity.DBHelper.TITLE_COl))
                 new_view.findViewById<TextView>(R.id.house_price).text = cursor2.getString(cursor2.getColumnIndex(
                     MainActivity.DBHelper.PRICE_COL))
-                var drawableId = this.getResources().getIdentifier(cursor2.getString(cursor2.getColumnIndex(MainActivity.DBHelper.IMG_COL)), "mipmap", context?.getPackageName())
-                new_view.findViewById<ImageView>(R.id.house_image).setImageResource(drawableId)
+                new_view.findViewById<ImageView>(R.id.house_image).setImageURI(Uri.parse(cursor2.getString(cursor2.getColumnIndex(MainActivity.DBHelper.IMG_COL))))
                 var found_id = cursor2.getInt(cursor2.getColumnIndex(
                     MainActivity.DBHelper.ID_COL))
                 new_view.findViewById<Button>(R.id.house_buy).setOnClickListener {
